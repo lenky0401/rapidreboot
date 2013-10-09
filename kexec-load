@@ -1,0 +1,42 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:		kexec-load
+# Required-Start:
+# Required-Stop:	$local_fs $remote_fs kexec
+# Should-Stop:		autofs
+# Default-Start:
+# Default-Stop:		6
+# Short-Description: Load kernel image with kexec
+# Description:
+### END INIT INFO
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+. /lib/lsb/init-functions
+
+test -r /etc/default/kexec && . /etc/default/kexec
+
+do_stop () {
+	if test -e /tmp/rapidrebootflag ; then
+		rm -f /tmp/rapidrebootflag
+		kexec -l /boot/vmlinuz-`uname -r` --initrd=/boot/initrd.img-`uname -r` --append="`cat /proc/cmdline`"
+	fi
+}
+
+case "$1" in
+  start)
+	# No-op
+	;;
+  restart|reload|force-reload)
+	echo "Error: argument '$1' not supported" >&2
+	exit 3
+	;;
+  stop)
+	do_stop
+	;;
+  *)
+	echo "Usage: $0 start|stop" >&2
+	exit 3
+	;;
+esac
+exit 0
