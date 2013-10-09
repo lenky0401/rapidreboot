@@ -1,0 +1,13 @@
+
+[Desktop Entry]
+Encoding=UTF-8
+Name=rapidreboot
+Name[zh_CN]=rapidreboot.desktop
+Comment=rapidreboot
+Comment[zh_CN]=rapidreboot
+Icon=rapidreboot
+Exec=python /usr/bin/rapidreboot_indicator.py
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
+X-Desktop-File-Install-Version=0.15
