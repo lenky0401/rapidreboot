@@ -12,7 +12,7 @@ def showabout(w):
 #	showtext.set_version("V0.1")
 #	showtext.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/local/share/rapidreboot/rapidreboot.png"))
 	showtext.set_website("https://github.com/lenky0401/rapidreboot")
-	showtext.set_copyright("利用kexec进行快速重启，这个重启过程和普通重启基本一致，但跳过了BIOS自检和GRUB选择两步，这样看来，其实也没多快，哈哈。")
+	showtext.set_copyright("利用kexec进行快速重启，这个重启过程和普通重启基本一致，但\n跳过了BIOS自检和GRUB选择两步，这样看来，其实也没多快，哈哈。\n该工具不影响其他方式的重启，比如从系统菜单里选择重启或执行\nreboot命令等，那些操作都将进行普通方式的重启。")
 	showtext.connect("response", closeabout)
 	showtext.show()
 
